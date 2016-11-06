@@ -18,10 +18,6 @@
 import xbmc
 import xbmcaddon
 import sys
-if sys.version_info < (2, 7):
-    import simplejson
-else:
-    import json as simplejson
 
 ADDON = xbmcaddon.Addon()
 
@@ -32,10 +28,7 @@ def main():
     dbid = info.getDbId()
     if not dbid:
         dbid = sys.listitem.getProperty("dbid")
-    json_query = xbmc.executeJSONRPC('{ "jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params":{"movieid": %d, "properties": ["trailer"]}, "id": 1 }' % (int(dbid)))
-    json_query = unicode(json_query, 'utf-8', errors='ignore')
-    json_query = simplejson.loads(json_query)
-    trailer = json_query['result']['moviedetails']['trailer']
+    trailer = info.getTrailer()
     if windowed:
         xbmc.executebuiltin("PlayMedia(%s)" % (trailer))
     else:
