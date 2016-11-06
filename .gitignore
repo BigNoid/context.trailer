@@ -1,0 +1,9 @@
+*.bat
+*.cmd
+*.log
+*.xbt
+*.exe
+*.sublime-project
+*.sublime-workspace
+*.DS_Store
+*.sh
