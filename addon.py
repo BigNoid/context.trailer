@@ -25,9 +25,6 @@ ADDON = xbmcaddon.Addon()
 def main():
     windowed = ADDON.getSetting("windowed") == "false"
     info = sys.listitem.getVideoInfoTag()
-    dbid = info.getDbId()
-    if not dbid:
-        dbid = sys.listitem.getProperty("dbid")
     trailer = info.getTrailer()
     if windowed:
         xbmc.executebuiltin("PlayMedia(%s)" % (trailer))
