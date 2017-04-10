@@ -26,10 +26,16 @@ def main():
     windowed = ADDON.getSetting("windowed") == "false"
     info = sys.listitem.getVideoInfoTag()
     trailer = info.getTrailer()
-    if windowed:
-        xbmc.executebuiltin("PlayMedia(%s)" % (trailer))
+    if trailer:
+        if windowed:
+            xbmc.executebuiltin("PlayMedia(%s)" % (trailer))
+        else:
+            xbmc.executebuiltin("PlayMedia(%s,1)" % (trailer))
     else:
-        xbmc.executebuiltin("PlayMedia(%s,1)" % (trailer))
+        name = sys.listitem.getLabel()
+        xbmc.executebuiltin(("RunScript(script.skin.helper.service,"
+                             "action=searchyoutube,title=%s Trailer,"
+                             "header=%s)" % (name, name)))
 
 
 if __name__ == '__main__':
