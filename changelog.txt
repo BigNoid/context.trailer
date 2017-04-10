@@ -1,4 +1,4 @@
 v0.1.0
 - Initial Release.
-v0.2.0
+v1.1.0
 - fallback to youTube search if no trailer in the DB
