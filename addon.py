@@ -33,10 +33,9 @@ def main():
             xbmc.executebuiltin("PlayMedia(%s,1)" % (trailer))
     else:
         name = sys.listitem.getLabel()
-        xbmc.executebuiltin(("RunScript(script.skin.helper.service,"
+        xbmc.executebuiltin("RunScript(script.skin.helper.service,"
                              "action=searchyoutube,title=%s Trailer,"
-                             "header=%s)" % (name, name)))
-
+                             "header=%s)" % (name, name))
 
 if __name__ == '__main__':
     main()
